@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Платье «Гончарова»",
+    "price": 24600,
+    "sizes": ["XS","S","M"],
+    "image": "/images/goncharova.jpg",
+    "category": "Платья"
+  },
+  {
+    "id": 2,
+    "name": "Болеро «Агата»",
+    "price": 12200,
+    "sizes": ["M-L","XS-S"],
+    "image": "/images/agata.jpg",
+    "category": "Аксессуары"
+  }
+]

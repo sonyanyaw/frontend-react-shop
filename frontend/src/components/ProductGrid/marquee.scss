@@ -1,0 +1,39 @@
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.marquee__content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-in 10s linear forwards, scroll-loop 10s linear 10s infinite;
+}
+
+.marquee__item {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 10px 0;
+  margin-right: 40px; 
+}
+
+@keyframes scroll-in {
+  from {
+    transform: translateX(-100%); 
+  }
+  to {
+    transform: translateX(-50%); 
+  }
+}
+
+@keyframes scroll-loop {
+  from {
+    transform: translateX(-50%); 
+  }
+  to {
+    transform: translateX(0); 
+  }
+}
