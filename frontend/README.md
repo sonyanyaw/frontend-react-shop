@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+[Читать на русском](./README.ru.md)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Fashion Shop — React E-Commerce Frontend
 
-Currently, two official plugins are available:
+A modern e-commerce frontend for a women's fashion store built with React 19, TypeScript, and Vite. The app features a product catalog with cart and favorites functionality, animated UI elements, and a responsive layout.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tech Stack
 
-## React Compiler
+| Tool | Version | Purpose |
+|------|---------|---------|
+| React | 19.2.0 | UI framework |
+| TypeScript | ~5.9.3 | Type safety |
+| Vite | 7.2.4 | Build tool & dev server |
+| SCSS/SASS | 1.97.0 | Styling |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Features
 
-## Expanding the ESLint configuration
+- Product grid with hover image switching
+- Add to cart with animated feedback
+- Favorites persisted to `localStorage`
+- Slide-out cart panel with quantity management
+- Header that shrinks on scroll
+- Animated marquee sale banner
+- Sidebar navigation menu
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Available scripts:**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev       # Start development server
+npm run build     # Type-check and build for production
+npm run preview   # Preview production build
+npm run lint      # Run ESLint
 ```
+
+### Project Structure
+
+```
+frontend/
+├── public/
+│   └── icons/          # SVG icons (cart, search, account, etc.)
+├── src/
+│   ├── components/
+│   │   ├── Header/     # Sticky shrinking header
+│   │   ├── ProductGrid/# Product grid + marquee banner
+│   │   ├── ProductCard/# Individual product card
+│   │   ├── Cart/       # Slide-out cart menu
+│   │   └── Menu/       # Sidebar navigation
+│   ├── context/        # CartContext, FavoriteContext
+│   ├── types/          # TypeScript interfaces (Product, CartItem)
+│   ├── data/           # Sample product data (JSON)
+│   └── App.tsx
+```
+
+### What's Left to Complete
+
+See the [Roadmap](#roadmap-en) below.
+
+<a name="roadmap-en"></a>
+### Roadmap
+
+#### High Priority
+
+1. **Routing** — Add React Router. Implement pages: Home, Product Detail, Cart, Checkout, Account. Wire up the existing `/product/{id}` links.
+2. **Product detail page** — Size selector, color variants, image gallery, description, reviews.
+3. **Cart persistence** — Save cart to `localStorage` (same pattern as favorites) so it survives page refreshes.
+4. **Real product data** — Replace the 6 hardcoded products with data from an API or a proper data file. Add real images.
+
+#### Medium Priority
+
+5. **Search** — The search icon is in the header but has no functionality. Implement a search overlay/page with filtering by name and category.
+6. **Filters & sorting** — Filter by category, price range, size; sort by price and newest.
+7. **Checkout flow** — Order form, delivery address, order summary, integration with a payment gateway (e.g. Stripe or YooKassa).
+8. **Authentication** — Login, registration, password recovery. Protect account and order history pages.
+
+#### Lower Priority
+
+9. **User account page** — Profile, saved addresses, order history.
+10. **Favorites page** — A dedicated page listing all favorited products.
+11. **Backend integration** — Connect to a REST or GraphQL API for products, orders, and users.
+12. **Accessibility** — Keyboard navigation, ARIA labels, focus management in modal panels.
+13. **SEO & meta** — Page titles, Open Graph tags, structured data for products.
+14. **Error & loading states** — Skeleton loaders, empty states, and error boundaries for API calls.
